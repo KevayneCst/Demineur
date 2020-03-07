@@ -22,9 +22,9 @@ public class Case {
 	/**
 	 * Lors d'un click droit sur la case:
 	 * <ol>
-	 * <li>"!" affiché sur la case : on est sûr qu'il y a une bombe</li>
-	 * <li>"?" affiché sur la case : on est pas sûr qu'il y a une bombe</li>
-	 * <li>"X" affiché sur la case : affichage revenu à la normale</li>
+	 * <li>"!" sur la case : on est sÃ»r qu'il y a une bombe</li>
+	 * <li>"?" sur la case : on est pas sÃ»r qu'il y a une bombe</li>
+	 * <li>"X" sur la case : affichage revenu Ã  la normale</li>
 	 * </ol>
 	 */
 	public void rightClick() {
@@ -47,7 +47,7 @@ public class Case {
 	}
 
 	/**
-	 * Découvre la case
+	 * DÃ©couvre la case
 	 * @return TRUE si c'est une bombe, FALSE sinon
 	 */
 	public boolean leftClick() {

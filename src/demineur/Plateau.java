@@ -98,7 +98,7 @@ public class Plateau {
 	}
 
 	/**
-	 * Découvre la case (Attention aux bombes !)
+	 * DÃ©couvre la case (Attention aux bombes !)
 	 * 
 	 * @param ligne
 	 * @param colonne
@@ -113,7 +113,7 @@ public class Plateau {
 	}
 
 	/**
-	 * Ne découvre pas mais couvre (place un drapeau)
+	 * Ne dÃ©couvre pas mais couvre (place un drapeau)
 	 * 
 	 * @param ligne
 	 * @param colonne
@@ -133,8 +133,7 @@ public class Plateau {
 	}
 
 	/*
-	 * Retourne la chaîne de caractère représentant le plateau de jeu du démineur
-	 * (affiche chacune des Case de la matrice
+	 * Retourne la chaÃ®ne de caractÃ¨re reprÃ©sentant le plateau de jeu du dÃ©mineur
 	 */
 	@Override
 	public String toString() {

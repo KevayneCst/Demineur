@@ -28,9 +28,9 @@ public class Game {
 			}
 			
 			
-			//Si c'est TRUE ==> C'est une bombe qui a ÈtÈ dÈcouverte !
+			//Si c'est TRUE ==> C'est une bombe qui a √©t√© d√©couverte !
 			if (isBombeDiscovered) {
-				System.out.println("Vous avez cliquÈ sur une bombe !");
+				System.out.println("Vous avez cliqu√© sur une bombe !");
 				break;
 			}
 			clear();
@@ -41,8 +41,8 @@ public class Game {
 		int x;
 		int y;
 		Scanner s = new Scanner(System.in);
-		System.out.println("Rajoutez un \"p\" devant le numÈro de la ligne/colonne si vous voulez placer un drapeau");
-		System.out.println("Saisir le numÈro de la ligne svp");
+		System.out.println("Rajoutez un \"p\" devant le num√©ro de la ligne/colonne si vous voulez placer un drapeau");
+		System.out.println("Saisir le num√©ro de la ligne svp");
 		while (true) {
 			String saisie = s.nextLine().trim();
 			if (saisie.contains("p")) {
@@ -55,14 +55,14 @@ public class Game {
 					x=theNumber;
 					break;
 				} else {
-					System.out.println("Valeur incohÈrante");
+					System.out.println("Valeur incoh√©rante");
 				}
 			} else {
 				System.out.println("La valeur saisie n'est pas un chiffre");
 			}
 		}
 		
-		System.out.println("Saisir le numÈro de la colonne svp");
+		System.out.println("Saisir le num√©ro de la colonne svp");
 		while (true) {
 			String saisie = s.nextLine().trim();
 			if (saisie.contains("p")) {
@@ -75,7 +75,7 @@ public class Game {
 					y=theNumber;
 					break;
 				} else {
-					System.out.println("Valeur incohÈrante");
+					System.out.println("Valeur incoh√©rante");
 				}
 			} else {
 				System.out.println("La valeur saisie n'est pas un chiffre");
