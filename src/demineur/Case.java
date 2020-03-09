@@ -8,6 +8,7 @@ public class Case {
 	private int colonne;
 	private int value;
 	private boolean discovered;
+	private boolean checked;
 	private String printedValue;
 	private List<Case> aroundCase;
 
@@ -16,6 +17,7 @@ public class Case {
 		this.colonne = colonne;
 		this.value = Demineur.ZERO_VALUE;
 		this.discovered = false;
+		this.checked = false;
 		this.printedValue = "X";
 	}
 
@@ -63,6 +65,14 @@ public class Case {
 	public void setDiscovered(boolean discovered) {
 		this.discovered = discovered;
 	}
+	
+	public boolean isChecked() {
+		return checked;
+	}
+
+	public void setChecked(boolean checked) {
+		this.checked = checked;
+	}
 
 	public String getPrintedValue() {
 		return printedValue;
@@ -106,8 +116,8 @@ public class Case {
 
 	@Override
 	public String toString() {
-		//return discovered ? value+"" : printedValue;
-		return value+"";
+		return discovered ? value+"" : printedValue;
+		//return value+"";
 	}
 
 }

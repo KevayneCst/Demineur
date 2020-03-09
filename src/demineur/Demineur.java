@@ -63,8 +63,6 @@ public class Demineur {
 		default:
 			break;
 		}
-		System.out.println("OHHO");
 		g.play();
-		System.out.println("OHHGEGGZO");
 	}
 }

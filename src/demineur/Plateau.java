@@ -25,44 +25,49 @@ public class Plateau {
 				plateau[i][k] = new Case(i, k);
 	}
 
+	/**
+	 * Regarde tout autour d'une case et compte le nombre de bombes qu'il y a.
+	 * @param ligne
+	 * @param colonne
+	 * @return nombre de bombes autour de cette case
+	 */
 	public int setRealValueToCase(int ligne, int colonne) {
 		List<Case> around = new ArrayList<>();
 		int count = 0;
-		
-			for (int i = -1; i <= 1; i++) {
-				if (ligne + i > 0 && ligne + i < maxligne) {
-					if (colonne + 1 < maxcolonne) {
-						around.add(plateau[ligne + i][colonne + 1]);
-						if (plateau[ligne + i][colonne + 1].getValue() == Demineur.BOMB_VALUE) {
-							count++;
-						}
-					}
-					if (colonne - 1 > 0) {
-						around.add(plateau[ligne + i][colonne - 1]);
-						if (plateau[ligne + i][colonne - 1].getValue() == Demineur.BOMB_VALUE) {
-							count++;
-						}
-					}
-				}
-			}
-			if (ligne - 1 > 0) {
-				around.add(plateau[ligne - 1][colonne]);
-				if (plateau[ligne - 1][colonne].getValue() == Demineur.BOMB_VALUE) {
-					count++;
-				}
-			}
-			if (ligne + 1 < maxligne) {
-				around.add(plateau[ligne + 1][colonne]);
-				if (plateau[ligne + 1][colonne].getValue() == Demineur.BOMB_VALUE) {
-					count++;
-				}
-			}
-			plateau[ligne][colonne].setAroundCase(around);
-			if (plateau[ligne][colonne].getValue() != Demineur.BOMB_VALUE) {
-				return -1;
-			}
-			return count;
 
+		for (int i = -1; i <= 1; i++) {
+			if (ligne + i > 0 && ligne + i < maxligne) {
+				if (colonne + 1 < maxcolonne) {
+					around.add(plateau[ligne + i][colonne + 1]);
+					if (plateau[ligne + i][colonne + 1].getValue() == Demineur.BOMB_VALUE) {
+						count++;
+					}
+				}
+				if (colonne - 1 > 0) {
+					around.add(plateau[ligne + i][colonne - 1]);
+					if (plateau[ligne + i][colonne - 1].getValue() == Demineur.BOMB_VALUE) {
+						count++;
+					}
+				}
+			}
+		}
+		if (ligne - 1 > 0) {
+			around.add(plateau[ligne - 1][colonne]);
+			if (plateau[ligne - 1][colonne].getValue() == Demineur.BOMB_VALUE) {
+				count++;
+			}
+		}
+		if (ligne + 1 < maxligne) {
+			around.add(plateau[ligne + 1][colonne]);
+			if (plateau[ligne + 1][colonne].getValue() == Demineur.BOMB_VALUE) {
+				count++;
+			}
+		}
+		plateau[ligne][colonne].setAroundCase(around);
+		if (plateau[ligne][colonne].getValue() != Demineur.BOMB_VALUE) {
+			return -1;
+		}
+		return count;
 
 	}
 
@@ -77,6 +82,10 @@ public class Plateau {
 		}
 	}
 
+	/**
+	 * Place un nombre <code>numberOfBombs</code> de bombes à des positions
+	 * aléatoires dans le plateau
+	 */
 	public void placeBombs() {
 		List<Point> p = new ArrayList<>();
 		for (int i = 0; i < numberOfBombs; i++) {
@@ -106,7 +115,7 @@ public class Plateau {
 	 */
 	public boolean discover(int ligne, int colonne) {
 		boolean notABomb = plateau[ligne][colonne].leftClick();
-		if (!notABomb) { //Si false
+		if (!notABomb) { // Si false
 			recDiscover(ligne, colonne);
 		}
 		return notABomb;
@@ -121,11 +130,14 @@ public class Plateau {
 	public void cover(int ligne, int colonne) {
 		plateau[ligne][colonne].rightClick();
 	}
-	
+
 	public void recDiscover(int ligne, int colonne) {
+		System.out.println("Ligne:"+ligne+" ; Colonne:"+colonne);
 		Case laCase = plateau[ligne][colonne];
-		if (laCase.getValue()==Demineur.ZERO_VALUE) { 
+		
+		if (laCase.getValue() == Demineur.ZERO_VALUE && !laCase.isChecked()) {
 			laCase.leftClick();
+			laCase.setChecked(true);
 			for (Case c : laCase.getAroundCase()) {
 				recDiscover(c.getLigne(), c.getColonne());
 			}
@@ -141,15 +153,13 @@ public class Plateau {
 
 		sb.append("\n     ");
 		for (int i = 0; i < maxcolonne; i++) {
-			if (i>=100) {
+			if (i >= 100) {
 				sb.append(i + "|");
-			} else if (i>=10) {
+			} else if (i >= 10) {
 				sb.append(" " + i + "|");
 			} else {
 				sb.append(" " + i + " |");
 			}
-			
-
 
 		}
 		sb.append("\n    -");
